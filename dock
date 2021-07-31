@@ -1,0 +1,10 @@
+#!/bin/bash
+echo $(pwd)
+docker container run \
+-it \
+--rm \
+-p 0.0.0.0:8080:8080 \
+--name=spiking-model-visualizer \
+-v "$(pwd)":/home/spiking-model-visualizer \
+louisross/spiking-model-visualizer:1.0 \
+bash

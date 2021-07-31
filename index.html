@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Spiking Model Visualizer</title>
+		<style>
+			body { margin: 0; }
+		</style>
+    <link rel="stylesheet" href="css/cube.css">
+	</head>
+  <body>
+    <canvas id="c"></canvas>
+  </body>
+
+  <script type="module">
+    import { cube } from './cube.js';
+    import { primitives } from './primitives.js';
+    import { solarSystem } from './solarsystem.js';
+    import { lights } from './lights.js';
+    import { Neuron } from './neuron.js';
+    import { Brain } from './brain.js';
+
+    function main() {
+      //cube();
+      //primitives();
+      //solarSystem();
+      //lights();
+      
+      const brain = new Brain();
+      for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
+          for (let k = 0; k < 10; k++) {
+            const neuron = new Neuron(i + j*10 + k*100);
+            const neuronRender = neuron.Render();
+            if (i == 5 && j == 5) {
+              neuronRender.rotation.z = 0.1 * k * Math.PI;
+              //neuronRender.rotation.y = 0.5;
+            }
+            brain.addNeuron(i, j, k, neuronRender);
+          }
+        }
+      }
+
+      brain.startRendering();
+    }
+
+    main();
+  </script>
+</html>
