@@ -19,6 +19,7 @@
     import { lights } from './lights.js';
     import { Neuron } from './neuron.js';
     import { Brain } from './brain.js';
+    import { ModelLoader } from './src/modelLoader.js'
 
     function main() {
       //cube();
@@ -27,19 +28,9 @@
       //lights();
       
       const brain = new Brain();
-      for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; j++) {
-          for (let k = 0; k < 10; k++) {
-            const neuron = new Neuron(i + j*10 + k*100);
-            const neuronRender = neuron.Render();
-            if (i == 5 && j == 5) {
-              neuronRender.rotation.z = 0.1 * k * Math.PI;
-              //neuronRender.rotation.y = 0.5;
-            }
-            brain.addNeuron(i, j, k, neuronRender);
-          }
-        }
-      }
+      const modelLoader = new ModelLoader(brain);
+      modelLoader.Load();
+
 
       brain.startRendering();
     }
