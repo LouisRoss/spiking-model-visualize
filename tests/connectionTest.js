@@ -26,7 +26,7 @@ class ConnectionTest {
         }
         else {
           for (var i = 0; i < 5; i++) {
-            const indexToShow = Math.floor(Math.random() * 1000);
+            const indexToShow = this.getUniqueRandomIndex(1000);
             this.showingConnectionsIndexes.push(indexToShow);
             this.brain.showAllConnections(indexToShow);
           }
@@ -35,6 +35,15 @@ class ConnectionTest {
         }
 
       }
+    }
+
+    getUniqueRandomIndex(maxIndex) {
+      do {
+        const indexToShow = Math.floor(Math.random() * maxIndex);
+        if (!this.showingConnectionsIndexes.includes(indexToShow)) {
+          return indexToShow;
+        }
+      } while(true);
     }
 }
 

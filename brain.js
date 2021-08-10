@@ -69,6 +69,8 @@ class Brain {
     if (neuronFrom) {
       for (const lineTo of neuronFrom.connectionResources) {
         this.scene.remove(lineTo);
+        lineTo.geometry.dispose();
+        lineTo.material.dispose();
         if (lineTo.dispose) {
           lineTo.dispose();
         }
