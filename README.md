@@ -1,1 +1,1 @@
-# spiking-model-vizualize
+# spiking-model-visualize
