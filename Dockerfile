@@ -12,7 +12,8 @@ RUN ls
 RUN npm install -g npm@7.20.1
 RUN npm install
 
-COPY [".", "."]
+COPY . .
+
 EXPOSE 8080
 
-CMD     ["bash"]
+CMD ./node_modules/http-server/bin/http-server . -p 3000
